@@ -145,3 +145,17 @@ main.dark, header.dark {
   object-fit: cover;
   height: 15vw;
 }
+
+.right-navigation {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.9375rem;
+}
+
+.right-navigation a {
+  color: var(--text-color);
+  font-size: 0.875rem;
+  font-weight: 400;
+  text-decoration: none;
+}
