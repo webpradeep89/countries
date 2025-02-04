@@ -8,7 +8,7 @@ const Header = () => {
     <header className={`header-container ${isDark && 'dark'}`}>
       
         <div className='all-country'>
-          <i className="icon-globe"></i> Hello Pradeep World!
+          <i className="icon-globe"></i> Hello World!
         </div>
         <div className='thim-type' onClick={
           () => {
