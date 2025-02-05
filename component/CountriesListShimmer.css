@@ -21,12 +21,14 @@ main.dark .shimmer-card {
     height: 20px;
     background-color: var(--shimmer-color);
     border-radius: 4px;
+    margin-bottom: 15px;
 }
 
 .shimmer-card p {
     height: 16px;
     border-radius: 4px;
     background-color: var(--shimmer-color);
+    margin-bottom: 5px;
 }
 
 .shimmer-card p:last-child {

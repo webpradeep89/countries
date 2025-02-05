@@ -4,7 +4,7 @@ const CountryCard = (props) => {
   const {name, flags, population, region, capital, data} = props
   return (
     <>
-    <NavLink className="card-container" key={name} to={`/${name}`} state={data}>
+    <NavLink className="card-container group relative" key={name} to={`/${name}`} state={data}>
       <div className="img-container">
         <img src={flags} alt={name} />
       </div>
