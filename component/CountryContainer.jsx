@@ -53,7 +53,7 @@ if (!countriesData.length) {
     {/* {count}
     <button onClick={startTimer}>Click</button>
     <button onClick={resetTimer}>reset</button> */}
-      <div className="countries-container">
+      <div className="countries-container mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
         {countriesData
           .filter((country) =>
             country.name.common.toLowerCase().includes(searchQuery) || country.region.toLowerCase().includes(searchQuery)

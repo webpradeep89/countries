@@ -1,6 +1,8 @@
 .expenses-container {
-    display: flex;
-    justify-content: center;
+    /* display: flex;
+    justify-content: space-between;
     align-items: flex-start;
     gap: 20px;
+    padding-top: 30px;
+    flex-wrap: wrap; */
 }
