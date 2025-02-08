@@ -2,14 +2,13 @@ import React, { useState } from "react";
 import InputField from "../common/InputField";
 import SelectMenu from "../common/SelectMenu";
 
-const ExpensesForm = ({ setExpenses }) => {
-  const [expense, setExpense] = useState({
-    title: "",
-    category: "",
-    amount: "",
-    email: "",
-  });
-
+const ExpensesForm = ({
+  expense,
+  setExpense,
+  setExpenses,
+  editingRoId,
+  setEditingRoId
+}) => {
   const [errors, setErrors] = useState({});
 
   const validationConfig = {
@@ -18,14 +17,20 @@ const ExpensesForm = ({ setExpenses }) => {
       { minLength: 5, message: "Title should be at least 5 characters long" },
     ],
     category: [{ required: true, message: "Please select a category" }],
-    amount: [{ required: true, message: "Please enter an amount" }],
-    email: [
-      { required: true, message: "Please enter an email" },
+    amount: [
+      { required: true, message: "Please enter an amount" },
       {
-        pattern: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/,
-        message: "Please enter a valid email",
+        pattern: /^[1-9]\d*(\.\d+)?$/,
+        message: "Please enter a valid number",
       },
     ],
+    // email: [
+    //   { required: true, message: "Please enter an email" },
+    //   {
+    //     pattern: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/,
+    //     message: "Please enter a valid email",
+    //   },
+    // ],
   };
 
   const validate = (formData) => {
@@ -58,6 +63,23 @@ const ExpensesForm = ({ setExpenses }) => {
     e.preventDefault();
     const validateResult = validate(expense);
     if (Object.keys(validateResult).length) return;
+    if (editingRoId) {
+      setExpenses((prevState) => 
+        prevState.map((prevExpense) => {
+          if (prevExpense.id === editingRoId) {
+            return { ...expense, id: editingRoId }
+          }
+          return prevExpense
+        })
+      );
+      setExpense({
+        title: "",
+        category: "",
+        amount: "",
+      });
+      setEditingRoId("");
+      return;
+    }
 
     setExpenses((prevState) => [
       ...prevState,
@@ -67,7 +89,7 @@ const ExpensesForm = ({ setExpenses }) => {
       title: "",
       category: "",
       amount: "",
-      email: "",
+      // email: "",
     });
   };
 
@@ -109,15 +131,15 @@ const ExpensesForm = ({ setExpenses }) => {
         onChange={handleChange}
         error={errors.amount}
       />
-      <InputField
+      {/* <InputField
         label="Email"
         id="email"
         name="email"
         value={expense.email}
         onChange={handleChange}
         error={errors.email}
-      />
-      <button className="add-btn">Add</button>
+      /> */}
+      <button className="add-btn">{editingRoId ? "Save" : "Add"}</button>
     </form>
   );
 };
